@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 module Numerify
   # A module to hold the utility methods.
@@ -49,14 +49,32 @@ module Numerify
       GEEZ_NUMERALS[number.to_i]
     end
 
-    def double_digit_geez(number)
+    def double_digit_geez(number, skip_one: false)
+      return "" if skip_one
+
       number.split("").map.with_index do |item, i|
         i.zero? ? single_digit_geez(item.to_s << "0") : single_digit_geez(item)
+      end.join
+    end
+
+    def add_delimiter(grouped_string)
+      last_index = grouped_string.length - 1
+      last_index.downto(0) do |i|
+        if i == last_index
+          grouped_string[i] = double_digit_geez(grouped_string[i])
+          next
+        end
+
+        delimiter = i.even? ? "፻" : "፼"
+        grouped_string[i] = double_digit_geez(grouped_string[i], skip_one: grouped_string[i].to_i == 1) << delimiter
       end
+      grouped_string
     end
 
     def convert_to_geez(arabic_number_string)
-      arabic_number_string.map { |item| double_digit_geez(item) }.join
+      even_length_string = prepend_zero(arabic_number_string)
+      grouped_string = group_by_two(even_length_string)
+      add_delimiter(grouped_string).join
     end
   end
 end
