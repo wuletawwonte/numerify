@@ -7,7 +7,7 @@ class TestNumerify < Minitest::Test
     refute_nil ::Numerify::VERSION
   end
 
-  # def test_it_does_something_useful
-  #   assert false
-  # end
+  def test_it_returns_string_convert
+    assert_equal "convert Hello to geez", "Hello".convert
+  end
 end
