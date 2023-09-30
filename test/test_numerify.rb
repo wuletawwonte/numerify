@@ -8,6 +8,10 @@ class TestNumerify < Minitest::Test
   end
 
   def test_it_returns_string_convert
-    assert_equal "convert Hello to geez", "Hello".convert
+    assert_equal "Converted to geez", "Hello".convert
+  end
+
+  def test_it_raises_error_for_unknown_language
+    assert_raises(ArgumentError) { "Hello".convert(:unknown) }
   end
 end
