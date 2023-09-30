@@ -34,7 +34,8 @@ module Numerify
     end
 
     def prepend_zero(arabic_number_string)
-      arabic_number_string.prepend("0") if arabic_number_string.length.odd?
+      return "0#{arabic_number_string}" if arabic_number_string.length.odd?
+
       arabic_number_string
     end
 

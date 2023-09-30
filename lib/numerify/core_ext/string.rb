@@ -11,10 +11,9 @@ class String
 
     even_length_string = prepend_zero(self)
     grouped_string = group_by_two(even_length_string)
-    result = convert_to_geez(grouped_string)
 
-    "Converted to #{result}"
+    convert_to_geez(grouped_string)
   end
 end
 
-puts "742365".convert
+puts "67".convert
