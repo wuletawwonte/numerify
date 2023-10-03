@@ -12,5 +12,3 @@ class String
     convert_to_geez(self) if language == :geez
   end
 end
-
-puts "11101".convert
