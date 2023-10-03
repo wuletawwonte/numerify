@@ -9,6 +9,6 @@ class String
   def convert(language = :geez)
     raise ArgumentError, "Unknown language #{language}" unless check_language?(language)
 
-    convert_to_geez(self) if language == :geez
+    return convert_to_geez(self) if language == :geez
   end
 end
