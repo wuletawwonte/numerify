@@ -9,9 +9,9 @@ class Integer
   def convert(language = :geez)
     case language
     when :geez
-      convert_to_geez(self.to_s)
+      convert_to_geez(to_s)
     when :roman
-      convert_to_roman(self.to_s)
+      convert_to_roman(to_s)
     else
       raise ArgumentError, "Unknown language #{language}"
     end

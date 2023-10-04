@@ -1,6 +1,7 @@
 # Numerify
 
-> A Ruby gem designed to effortlessly convert numbers between Arabic and various world languages, including Geez, Chinese, Greek, and many more.
+> A Ruby gem designed to effortlessly convert numbers between Arabic and various world languages, including Geez, Roman, and Greek.
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
