@@ -23,8 +23,19 @@ module Numerify
       80 => "፹",
       90 => "፺"
     }.freeze
+    ROMAN_NUMERALS = {
+      1 => "I",
+      5 => "V",
+      10 => "X",
+      50 => "L",
+      100 => "C",
+      500 => "D",
+      1000 => "M"
+    }.freeze
 
     private
+
+    # To Geez numeral conversion methods
 
     def prepend_zero(arabic_number_string)
       return "0#{arabic_number_string}" if arabic_number_string.length.odd?
@@ -68,5 +79,9 @@ module Numerify
       grouped_string = group_by_two prepend_zero(arabic_number_string)
       add_delimiter(grouped_string).join
     end
+
+    # To Roman numeral conversion methods
+
+    def convert_to_roman(arabic_number_string); end
   end
 end

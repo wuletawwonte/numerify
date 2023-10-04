@@ -33,4 +33,8 @@ class TestNumerify < Minitest::Test
     assert_equal "፲", 10.convert
     assert_equal "፶፮", 56.convert
   end
+
+  def test_it_defaults_to_geez_if_language_not_given
+    assert_equal "፩", "1".convert
+  end
 end
