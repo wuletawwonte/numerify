@@ -3,7 +3,6 @@
 module Numerify
   # A module to hold the utility methods.
   module Utils
-    NUMERALS = %i[geez arabic roman english].freeze
     GEEZ_NUMERALS = {
       1 => "፩",
       2 => "፪",
@@ -22,16 +21,10 @@ module Numerify
       60 => "፷",
       70 => "፸",
       80 => "፹",
-      90 => "፺",
-      100 => "፻",
-      10_000 => "፼"
+      90 => "፺"
     }.freeze
 
     private
-
-    def check_language?(language)
-      NUMERALS.include?(language)
-    end
 
     def prepend_zero(arabic_number_string)
       return "0#{arabic_number_string}" if arabic_number_string.length.odd?
