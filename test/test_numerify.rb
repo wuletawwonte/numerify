@@ -27,4 +27,10 @@ class TestNumerify < Minitest::Test
     assert_equal "፹፩", "81".convert
     assert_equal "፺", "90".convert
   end
+
+  def test_it_works_with_integers
+    assert_equal "፫", 3.convert
+    assert_equal "፲", 10.convert
+    assert_equal "፶፮", 56.convert
+  end
 end
