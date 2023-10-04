@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "numerify/utils/shared"
+require_relative "../utils/shared"
 
 # A patch to add the convert method to the Integer class.
 class Integer
