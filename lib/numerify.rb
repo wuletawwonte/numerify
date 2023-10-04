@@ -2,3 +2,4 @@
 
 require_relative "numerify/version"
 require_relative "numerify/core_ext/string"
+require_relative "numerify/core_ext/integer"
