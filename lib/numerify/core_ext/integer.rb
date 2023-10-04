@@ -2,13 +2,13 @@
 
 require "numerify/utils/shared"
 
-# A patch to add the convert method to the String class.
-class String
+# A patch to add the convert method to the Integer class.
+class Integer
   include Numerify::Utils
 
   def convert(language = :geez)
     raise ArgumentError, "Unknown language #{language}" unless check_language?(language)
 
-    convert_to_geez(self) if language == :geez
+    convert_to_geez(to_s) if language == :geez
   end
 end
