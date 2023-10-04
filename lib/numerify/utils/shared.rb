@@ -65,8 +65,7 @@ module Numerify
     end
 
     def convert_to_geez(arabic_number_string)
-      even_length_string = prepend_zero(arabic_number_string)
-      grouped_string = group_by_two(even_length_string)
+      grouped_string = group_by_two prepend_zero(arabic_number_string)
       add_delimiter(grouped_string).join
     end
   end
