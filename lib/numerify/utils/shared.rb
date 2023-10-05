@@ -24,6 +24,7 @@ module Numerify
       90 => "፺"
     }.freeze
     ROMAN_NUMERALS = {
+      0 => "",
       1 => "I",
       5 => "V",
       10 => "X",
@@ -82,6 +83,34 @@ module Numerify
 
     # To Roman numeral conversion methods
 
-    def convert_to_roman(arabic_number_string); end
+    def self.convert_to_roman(arabic_number_string)
+      length = arabic_number_string.length
+      result =""
+      arabic_number_string.split("").each_with_index do |digit, i|
+        position = 10**(length - i - 1)
+        
+        target = digit.to_i * position
+        
+        item = ROMAN_NUMERALS.keys.bsearch { |key| key >= target } 
+        if target == item
+          result << ROMAN_NUMERALS[item]
+        elsif target == (item - position)
+          result << ROMAN_NUMERALS[item - 4*position] << ROMAN_NUMERALS[item]
+        elsif target == (item - (position * 2))
+          result << ROMAN_NUMERALS[item - 5*position]
+          3.times { result << ROMAN_NUMERALS[position] }
+        elsif target == (item - (position * 3))
+          result << ROMAN_NUMERALS[item - (5*position)]
+          2.times { result << ROMAN_NUMERALS[position] }
+        else
+          result << ROMAN_NUMERALS[item - 5*position]
+          result << ROMAN_NUMERALS[position]
+        end
+        puts "Position: #{position.inspect} Target: #{target.inspect} item: #{item.inspect} result: #{result.inspect}"
+      end
+      result
+    end
   end
 end
+
+puts Numerify::Utils.convert_to_roman("834")
