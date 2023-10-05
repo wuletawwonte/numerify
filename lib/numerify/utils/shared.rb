@@ -83,34 +83,25 @@ module Numerify
 
     # To Roman numeral conversion methods
 
-    def self.convert_to_roman(arabic_number_string)
+    def convert_to_roman(arabic_number_string)
       length = arabic_number_string.length
-      result =""
-      arabic_number_string.split("").each_with_index do |digit, i|
+      arabic_number_string.split("").map.with_index do |digit, i|
         position = 10**(length - i - 1)
-        
         target = digit.to_i * position
-        
-        item = ROMAN_NUMERALS.keys.bsearch { |key| key >= target } 
-        if target == item
-          result << ROMAN_NUMERALS[item]
-        elsif target == (item - position)
-          result << ROMAN_NUMERALS[item - 4*position] << ROMAN_NUMERALS[item]
-        elsif target == (item - (position * 2))
-          result << ROMAN_NUMERALS[item - 5*position]
-          3.times { result << ROMAN_NUMERALS[position] }
-        elsif target == (item - (position * 3))
-          result << ROMAN_NUMERALS[item - (5*position)]
-          2.times { result << ROMAN_NUMERALS[position] }
+        item = ROMAN_NUMERALS.keys.bsearch { |key| key >= target }
+        case target
+        when item
+          ROMAN_NUMERALS[item]
+        when item - position
+          ROMAN_NUMERALS[position].concat(ROMAN_NUMERALS[item])
+        when item - (position * 2)
+          ROMAN_NUMERALS[item - (5 * position)].concat(ROMAN_NUMERALS[position] * 3)
+        when item - (position * 3)
+          ROMAN_NUMERALS[item - (5 * position)].concat(ROMAN_NUMERALS[position] * 2)
         else
-          result << ROMAN_NUMERALS[item - 5*position]
-          result << ROMAN_NUMERALS[position]
+          ROMAN_NUMERALS[item - (5 * position)].concat(ROMAN_NUMERALS[position])
         end
-        puts "Position: #{position.inspect} Target: #{target.inspect} item: #{item.inspect} result: #{result.inspect}"
-      end
-      result
+      end.join
     end
   end
 end
-
-puts Numerify::Utils.convert_to_roman("834")

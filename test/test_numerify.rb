@@ -37,4 +37,10 @@ class TestNumerify < Minitest::Test
   def test_it_defaults_to_geez_if_language_not_given
     assert_equal "፩", "1".convert
   end
+
+  def test_it_converts_to_romans
+    assert_equal "VII", "7".convert(:roman)
+    assert_equal "X", "10".convert(:roman)
+    assert_equal "L", "50".convert(:roman)
+  end
 end
