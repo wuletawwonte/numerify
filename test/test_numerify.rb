@@ -41,6 +41,10 @@ class TestNumerify < Minitest::Test
   def test_it_converts_to_romans
     assert_equal "VII", "7".convert(:roman)
     assert_equal "X", "10".convert(:roman)
+    assert_equal "XV", "15".convert(:roman)
+    assert_equal "XX", "20".convert(:roman)
+    assert_equal "XXXV", "35".convert(:roman)
+    assert_equal "XL", "40".convert(:roman)
     assert_equal "L", "50".convert(:roman)
   end
 end

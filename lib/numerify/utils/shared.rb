@@ -93,13 +93,13 @@ module Numerify
         when item
           ROMAN_NUMERALS[item]
         when item - position
-          ROMAN_NUMERALS[position].concat(ROMAN_NUMERALS[item])
+          ROMAN_NUMERALS[position] + ROMAN_NUMERALS[item]
         when item - (position * 2)
-          ROMAN_NUMERALS[item - (5 * position)].concat(ROMAN_NUMERALS[position] * 3)
+          ROMAN_NUMERALS[item - (5 * position)] + (ROMAN_NUMERALS[position] * 3)
         when item - (position * 3)
-          ROMAN_NUMERALS[item - (5 * position)].concat(ROMAN_NUMERALS[position] * 2)
+          ROMAN_NUMERALS[item - (5 * position)] + (ROMAN_NUMERALS[position] * 2)
         else
-          ROMAN_NUMERALS[item - (5 * position)].concat(ROMAN_NUMERALS[position])
+          ROMAN_NUMERALS[item - (5 * position)] + ROMAN_NUMERALS[position]
         end
       end.join
     end
