@@ -4,6 +4,7 @@ module Numerify
   # A module to hold the utility methods.
   module Utils
     GEEZ_NUMERALS = {
+      0 => "",
       1 => "፩",
       2 => "፪",
       3 => "፫",
@@ -49,8 +50,6 @@ module Numerify
     end
 
     def single_digit_geez(number)
-      return "" if number.to_i.zero?
-
       GEEZ_NUMERALS[number.to_i]
     end
 
@@ -82,26 +81,26 @@ module Numerify
     end
 
     # To Roman numeral conversion methods
-
     def convert_to_roman(arabic_number_string)
-      length = arabic_number_string.length
+      arabic_number_string = arabic_number_string.strip
       arabic_number_string.split("").map.with_index do |digit, i|
-        position = 10**(length - i - 1)
+        position = 10**(arabic_number_string.length - i - 1)
         target = digit.to_i * position
         item = ROMAN_NUMERALS.keys.bsearch { |key| key >= target }
-        case target
-        when item
-          ROMAN_NUMERALS[item]
-        when item - position
-          ROMAN_NUMERALS[position] + ROMAN_NUMERALS[item]
-        when item - (position * 2)
-          ROMAN_NUMERALS[item - (5 * position)] + (ROMAN_NUMERALS[position] * 3)
-        when item - (position * 3)
-          ROMAN_NUMERALS[item - (5 * position)] + (ROMAN_NUMERALS[position] * 2)
-        else
-          ROMAN_NUMERALS[item - (5 * position)] + ROMAN_NUMERALS[position]
-        end
+        convert_digit_to_roman(target, position, item)
       end.join
+    end
+
+    def convert_digit_to_roman(target, position, item)
+      case target
+      when item
+        ROMAN_NUMERALS[item]
+      when item - position
+        ROMAN_NUMERALS[position] + ROMAN_NUMERALS[item]
+      else
+        rep = ((target - item) / position) + 5
+        ROMAN_NUMERALS[item - (5 * position)] + (ROMAN_NUMERALS[position] * rep)
+      end
     end
   end
 end

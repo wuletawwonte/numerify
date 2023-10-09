@@ -38,7 +38,7 @@ class TestNumerify < Minitest::Test
     assert_equal "፩", "1".convert
   end
 
-  def test_it_converts_to_romans
+  def test_it_converts_numbers_below_hundred_to_roman
     assert_equal "VII", "7".convert(:roman)
     assert_equal "X", "10".convert(:roman)
     assert_equal "XV", "15".convert(:roman)
@@ -46,5 +46,10 @@ class TestNumerify < Minitest::Test
     assert_equal "XXXV", "35".convert(:roman)
     assert_equal "XL", "40".convert(:roman)
     assert_equal "L", "50".convert(:roman)
+  end
+
+  def test_it_converts_numbers_greater_than_hundred_to_roman
+    assert_equal "DCCXXIV", "724".convert(:roman)
+    assert_equal "M", "1000".convert(:roman)
   end
 end
