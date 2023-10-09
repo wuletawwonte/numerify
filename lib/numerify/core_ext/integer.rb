@@ -7,8 +7,13 @@ class Integer
   include Numerify::Utils
 
   def convert(language = :geez)
-    raise ArgumentError, "Unknown language #{language}" unless check_language?(language)
-
-    convert_to_geez(to_s) if language == :geez
+    case language
+    when :geez
+      convert_to_geez(to_s)
+    when :roman
+      convert_to_roman(to_s)
+    else
+      raise ArgumentError, "Unknown language #{language}"
+    end
   end
 end

@@ -33,4 +33,29 @@ class TestNumerify < Minitest::Test
     assert_equal "፲", 10.convert
     assert_equal "፶፮", 56.convert
   end
+
+  def test_it_defaults_to_geez_if_language_not_given
+    assert_equal "፩", "1".convert
+  end
+
+  def test_it_converts_numbers_below_hundred_to_roman
+    assert_equal "VII", "7".convert(:roman)
+    assert_equal "X", "10".convert(:roman)
+    assert_equal "XV", "15".convert(:roman)
+    assert_equal "XX", "20".convert(:roman)
+    assert_equal "XXXV", "35".convert(:roman)
+    assert_equal "XL", "40".convert(:roman)
+    assert_equal "L", "50".convert(:roman)
+  end
+
+  def test_it_converts_numbers_greater_than_hundred_to_roman
+    assert_equal "DCCXXIV", "724".convert(:roman)
+    assert_equal "M", "1000".convert(:roman)
+    assert_equal "MCC", "1200".convert(:roman)
+    assert_equal "MCD", "1400".convert(:roman)
+    assert_equal "MD", "1500".convert(:roman)
+    assert_equal "MCMXCIX", "1999".convert(:roman)
+    assert_equal "MM", "2000".convert(:roman)
+    assert_equal "MMMCMXCIX", "3999".convert(:roman)
+  end
 end

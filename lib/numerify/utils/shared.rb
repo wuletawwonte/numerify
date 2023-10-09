@@ -3,8 +3,8 @@
 module Numerify
   # A module to hold the utility methods.
   module Utils
-    NUMERALS = %i[geez arabic roman english].freeze
     GEEZ_NUMERALS = {
+      0 => "",
       1 => "፩",
       2 => "፪",
       3 => "፫",
@@ -22,16 +22,22 @@ module Numerify
       60 => "፷",
       70 => "፸",
       80 => "፹",
-      90 => "፺",
-      100 => "፻",
-      10_000 => "፼"
+      90 => "፺"
+    }.freeze
+    ROMAN_NUMERALS = {
+      0 => "",
+      1 => "I",
+      5 => "V",
+      10 => "X",
+      50 => "L",
+      100 => "C",
+      500 => "D",
+      1000 => "M"
     }.freeze
 
     private
 
-    def check_language?(language)
-      NUMERALS.include?(language)
-    end
+    # To Geez numeral conversion methods
 
     def prepend_zero(arabic_number_string)
       return "0#{arabic_number_string}" if arabic_number_string.length.odd?
@@ -44,8 +50,6 @@ module Numerify
     end
 
     def single_digit_geez(number)
-      return "" if number.to_i.zero?
-
       GEEZ_NUMERALS[number.to_i]
     end
 
@@ -72,9 +76,37 @@ module Numerify
     end
 
     def convert_to_geez(arabic_number_string)
-      even_length_string = prepend_zero(arabic_number_string)
-      grouped_string = group_by_two(even_length_string)
+      grouped_string = group_by_two prepend_zero(arabic_number_string)
       add_delimiter(grouped_string).join
+    end
+
+    # To Roman numeral conversion methods
+    def convert_to_roman(arabic_number_string)
+      arabic_number_string = arabic_number_string.strip
+      return convert_to_roman_below_two_thousand(arabic_number_string) if arabic_number_string.to_i < 2000
+
+      ("M" * arabic_number_string.slice(0...-3).to_i) + convert_to_roman_below_two_thousand(arabic_number_string.slice(-3, 3))
+    end
+
+    def convert_to_roman_below_two_thousand(arabic_number_string)
+      arabic_number_string.split("").map.with_index do |digit, i|
+        position = 10**(arabic_number_string.length - i - 1)
+        target = digit.to_i * position
+        item = ROMAN_NUMERALS.keys.bsearch { |key| key >= target }
+        convert_digit_to_roman(target, position, item)
+      end.join
+    end
+
+    def convert_digit_to_roman(target, position, item)
+      case target
+      when item
+        ROMAN_NUMERALS[item]
+      when item - position
+        ROMAN_NUMERALS[position] + ROMAN_NUMERALS[item]
+      else
+        rep = ((target - item) / position) + 5
+        ROMAN_NUMERALS[item - (5 * position)] + (ROMAN_NUMERALS[position] * rep)
+      end
     end
   end
 end
