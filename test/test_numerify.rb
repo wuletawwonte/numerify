@@ -51,5 +51,11 @@ class TestNumerify < Minitest::Test
   def test_it_converts_numbers_greater_than_hundred_to_roman
     assert_equal "DCCXXIV", "724".convert(:roman)
     assert_equal "M", "1000".convert(:roman)
+    assert_equal "MCC", "1200".convert(:roman)
+    assert_equal "MCD", "1400".convert(:roman)
+    assert_equal "MD", "1500".convert(:roman)
+    assert_equal "MCMXCIX", "1999".convert(:roman)
+    assert_equal "MM", "2000".convert(:roman)
+    assert_equal "MMMCMXCIX", "3999".convert(:roman)
   end
 end
