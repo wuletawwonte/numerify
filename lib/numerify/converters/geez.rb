@@ -3,7 +3,7 @@
 module Numerify
   module Converters
     # A class to convert to Geez script.
-    class Geez
+    class Geez < NumeralBase
       GEEZ_NUMERALS = {
         0 => "",
         1 => "፩",
@@ -25,10 +25,6 @@ module Numerify
         80 => "፹",
         90 => "፺"
       }.freeze
-
-      def initialize(value)
-        @value = value.to_s
-      end
 
       def convert
         # Convert @value to Geez script
