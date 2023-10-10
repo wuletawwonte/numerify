@@ -26,18 +26,19 @@ module Numerify
         90 => "፺"
       }.freeze
 
-      def convert
-        # Convert @value to Geez script
-        @value = "0#{@value}" if @value.length.odd?
-        add_delimiter group_by_two
+      def convert(arabic_number_string)
+        arabic_number_string = arabic_number_string.to_s.strip
+
+        arabic_number_string = "0#{arabic_number_string}" if arabic_number_string.length.odd?
+        add_delimiter group_by_two arabic_number_string
       end
 
       private
 
       # To Geez numeral conversion methods
 
-      def group_by_two
-        @value.split("").each_slice(2).to_a.map(&:join)
+      def group_by_two(value)
+        value.split("").each_slice(2).to_a.map(&:join)
       end
 
       def single_digit_geez(number)
