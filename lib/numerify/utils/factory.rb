@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require_relative "../converters/geez"
+require_relative "../converters/roman"
+
 module Numerify
   module Utils
     # A factory class to create numeral objects.

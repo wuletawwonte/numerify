@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "numerify/version"
-require_relative "numerify/core_ext/string"
-require_relative "numerify/core_ext/integer"
+require_relative "numerify/utils/factory"
 
 # A module to convert numbers to numerals.
 module Numerify
@@ -13,3 +12,5 @@ module Numerify
     end
   end
 end
+
+puts Numerify.convert(1234)
