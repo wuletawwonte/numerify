@@ -28,22 +28,16 @@ module Numerify
 
       def convert
         # Convert @value to Geez script
-        grouped_string = group_by_two prepend_zero(@value)
-        add_delimiter(grouped_string).join
+        @value = "0#{@value}" if @value.length.odd?
+        add_delimiter group_by_two
       end
 
       private
 
       # To Geez numeral conversion methods
 
-      def prepend_zero(arabic_number_string)
-        return "0#{arabic_number_string}" if arabic_number_string.length.odd?
-
-        arabic_number_string
-      end
-
-      def group_by_two(arabic_number_string)
-        arabic_number_string.split("").each_slice(2).to_a.map(&:join)
+      def group_by_two
+        @value.split("").each_slice(2).to_a.map(&:join)
       end
 
       def single_digit_geez(number)
@@ -69,7 +63,7 @@ module Numerify
           delimiter = i.even? ? "፻" : "፼"
           grouped_string[i] = double_digit_geez(grouped_string[i], skip_one: grouped_string[i].to_i == 1) << delimiter
         end
-        grouped_string
+        grouped_string.join
       end
     end
   end

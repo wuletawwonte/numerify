@@ -16,16 +16,16 @@ module Numerify
       }.freeze
 
       def convert
-        return convert_to_roman_below_two_thousand(@value) if @value.to_i < 2000
+        return convert_to_roman_below_two_thousand if @value.to_i < 2000
 
         ("M" * @value.slice(0...-3).to_i) + convert_to_roman_below_two_thousand(@value.slice(-3, 3))
       end
 
       private
 
-      def convert_to_roman_below_two_thousand(arabic_number_string)
-        arabic_number_string.split("").map.with_index do |digit, i|
-          position = 10**(arabic_number_string.length - i - 1)
+      def convert_to_roman_below_two_thousand
+        @value.split("").map.with_index do |digit, i|
+          position = 10**(@value.length - i - 1)
           target = digit.to_i * position
           item = ROMAN_NUMERALS.keys.bsearch { |key| key >= target }
           convert_digit_to_roman(target, position, item)
