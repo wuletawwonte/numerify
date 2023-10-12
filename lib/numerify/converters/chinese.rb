@@ -5,7 +5,7 @@ require_relative "numeral_base"
 # A class to convert to Chinese numerals.
 class Chinese < NumeralBase
   CHINESE_NUMERALS = {
-    0 => "零",
+    0 => "",
     1 => "一",
     2 => "二",
     3 => "三",
@@ -24,6 +24,8 @@ class Chinese < NumeralBase
 
   def convert(arabic_number_string)
     arabic_number_string = arabic_number_string.to_s.strip
+    return "" if arabic_number_string.empty?
+    return "零" if arabic_number_string == "0"
 
     convert_to_chinese arabic_number_string
   end
@@ -33,9 +35,7 @@ class Chinese < NumeralBase
   def convert_to_chinese(value)
     value.chars.map.with_index do |digit, i|
       position = 10**(value.length - i - 1)
-      result = CHINESE_NUMERALS[digit.to_i]
-      result += CHINESE_NUMERALS[position] unless position == 1
-      result
+      position == 1 || digit == "0" ? CHINESE_NUMERALS[digit.to_i] : CHINESE_NUMERALS[digit.to_i] + CHINESE_NUMERALS[position]
     end.join
   end
 end

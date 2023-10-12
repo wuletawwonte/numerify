@@ -58,4 +58,15 @@ class TestNumerify < Minitest::Test
     assert_equal "MM", "2000".convert(:roman)
     assert_equal "MMMCMXCIX", "3999".convert(:roman)
   end
+
+  def test_convert_to_chinese
+    assert_equal "零", "0".convert(:chinese)
+    assert_equal "二", "2".convert(:chinese)
+    assert_equal "一十", "10".convert(:chinese)
+    assert_equal "一百", "100".convert(:chinese)
+    assert_equal "一千二百三十四", "1234".convert(:chinese)
+    assert_equal "五千六百七十八", "5678".convert(:chinese)
+    assert_equal "一万二千三百四十五", 12_345.convert(:chinese)
+    assert_equal "一万二千三百四十五", 12_345.convert(:chinese)
+  end
 end
