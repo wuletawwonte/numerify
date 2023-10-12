@@ -4,7 +4,7 @@ require_relative "numeral_base"
 
 # A class to convert to Roman numerals.
 class Roman < NumeralBase
-  ROMAN_NUMERALS = {
+  NUMERALS = {
     0 => "",
     1 => "I",
     5 => "V",
@@ -28,7 +28,7 @@ class Roman < NumeralBase
     value.split("").map.with_index do |digit, i|
       position = 10**(value.length - i - 1)
       target = digit.to_i * position
-      item = ROMAN_NUMERALS.keys.bsearch { |key| key >= target }
+      item = NUMERALS.keys.bsearch { |key| key >= target }
       convert_digit_to_roman(target, position, item)
     end.join
   end
@@ -36,12 +36,12 @@ class Roman < NumeralBase
   def convert_digit_to_roman(target, position, item)
     case target
     when item
-      ROMAN_NUMERALS[item]
+      NUMERALS[item]
     when item - position
-      ROMAN_NUMERALS[position] + ROMAN_NUMERALS[item]
+      NUMERALS[position] + NUMERALS[item]
     else
       rep = ((target - item) / position) + 5
-      ROMAN_NUMERALS[item - (5 * position)] + (ROMAN_NUMERALS[position] * rep)
+      NUMERALS[item - (5 * position)] + (NUMERALS[position] * rep)
     end
   end
 end

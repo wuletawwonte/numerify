@@ -4,7 +4,7 @@ require_relative "numeral_base"
 
 # A class to convert to Geez script.
 class Geez < NumeralBase
-  GEEZ_NUMERALS = {
+  NUMERALS = {
     0 => "",
     1 => "፩",
     2 => "፪",
@@ -42,7 +42,7 @@ class Geez < NumeralBase
   end
 
   def single_digit_geez(number)
-    GEEZ_NUMERALS[number.to_i]
+    NUMERALS[number.to_i]
   end
 
   def double_digit_geez(number, skip_one: false)
