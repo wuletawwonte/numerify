@@ -8,7 +8,7 @@ module Numerify
   module Utils
     # A factory class to create numeral objects.
     class NumeralFactory
-      def call(language)
+      def call(language) # rubocop:disable Metrics/MethodLength
         case language
         when :geez
           Geez.new
@@ -16,6 +16,8 @@ module Numerify
           Roman.new
         when :chinese
           Chinese.new
+        when :thai
+          Thai.new
         else
           raise ArgumentError, "Unknown language: #{language}"
         end
