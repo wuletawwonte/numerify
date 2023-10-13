@@ -12,25 +12,20 @@ module Numerify
   module Utils
     # A factory class to create numeral objects.
     class NumeralFactory
-      def call(language) # rubocop:disable all
-        case language
-        when :geez
-          Geez.new
-        when :roman
-          Roman.new
-        when :chinese
-          Chinese.new
-        when :thai
-          Thai.new
-        when :bengali
-          Bengali.new
-        when :devanagari
-          Devanagari.new
-        when :gujarati
-          Gujarati.new
-        else
-          raise ArgumentError, "Unknown language: #{language}"
-        end
+      NUMERALCLASSES = {
+        geez: Geez,
+        roman: Roman,
+        chinese: Chinese,
+        thai: Thai,
+        bengali: Bengali,
+        devanagari: Devanagari,
+        gujarati: Gujarati
+      }.freeze
+
+      def call(language)
+        raise ArgumentError, "Invalid language" unless NUMERALCLASSES.key?(language.to_sym)
+
+        NUMERALCLASSES[language.to_sym].new
       end
     end
   end
