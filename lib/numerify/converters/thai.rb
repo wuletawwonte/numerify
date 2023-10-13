@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "numeral_base"
+require_relative "decimal_numerals"
 
 # A class to convert to Thai numerals.
 class Thai < NumeralBase
@@ -18,9 +19,6 @@ class Thai < NumeralBase
   }.freeze
 
   def convert(arabic_number_string)
-    arabic_number_string = arabic_number_string.to_s.strip
-    return "" if arabic_number_string.empty?
-
-    arabic_number_string.chars.map { |digit| NUMERALS[digit.to_i] }.join
+    from_arabic(arabic_number_string, NUMERALS)
   end
 end
