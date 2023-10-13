@@ -10,6 +10,7 @@ require_relative "../converters/gujarati"
 require_relative "../converters/gurmukhi"
 require_relative "../converters/kannada"
 require_relative "../converters/khmer"
+require_relative "../converters/lao"
 
 module Numerify
   module Utils
@@ -25,7 +26,8 @@ module Numerify
         gujarati: Gujarati,
         gurmukhi: Gurmukhi,
         kannada: Kannada,
-        khmer: Khmer
+        khmer: Khmer,
+        lao: Lao
       }.freeze
 
       def call(language)
