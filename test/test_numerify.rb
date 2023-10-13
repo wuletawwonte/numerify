@@ -79,4 +79,14 @@ class TestNumerify < Minitest::Test
     assert_equal "๕๖๗๘", "5678".convert(:thai)
     assert_equal "๑๒๓๔๕", 12_345.convert(:thai)
   end
+
+  def test_convert_to_bengali
+    assert_equal "০", "0".convert(:bengali)
+    assert_equal "২", "2".convert(:bengali)
+    assert_equal "১০", "10".convert(:bengali)
+    assert_equal "১০০", "100".convert(:bengali)
+    assert_equal "১২৩৪", "1234".convert(:bengali)
+    assert_equal "৫৬৭৮", "5678".convert(:bengali)
+    assert_equal "১২৩৪৫", 12_345.convert(:bengali)
+  end
 end
