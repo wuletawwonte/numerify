@@ -6,12 +6,13 @@ require_relative "../converters/chinese"
 require_relative "../converters/thai"
 require_relative "../converters/bengali"
 require_relative "../converters/devanagari"
+require_relative "../converters/gujarati"
 
 module Numerify
   module Utils
     # A factory class to create numeral objects.
     class NumeralFactory
-      def call(language) # rubocop:disable Metrics/MethodLength
+      def call(language) # rubocop:disable all
         case language
         when :geez
           Geez.new
@@ -25,6 +26,8 @@ module Numerify
           Bengali.new
         when :devanagari
           Devanagari.new
+        when :gujarati
+          Gujarati.new
         else
           raise ArgumentError, "Unknown language: #{language}"
         end
