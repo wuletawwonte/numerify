@@ -9,6 +9,7 @@ require_relative "../converters/devanagari"
 require_relative "../converters/gujarati"
 require_relative "../converters/gurmukhi"
 require_relative "../converters/kannada"
+require_relative "../converters/khmer"
 
 module Numerify
   module Utils
@@ -23,7 +24,8 @@ module Numerify
         devanagari: Devanagari,
         gujarati: Gujarati,
         gurmukhi: Gurmukhi,
-        kannada: Kannada
+        kannada: Kannada,
+        khmer: Khmer
       }.freeze
 
       def call(language)
