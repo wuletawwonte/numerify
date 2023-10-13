@@ -72,4 +72,14 @@ class TestDecimalNumerals < Minitest::Test
     assert_equal "៥៦៧៨", "5678".convert(:khmer)
     assert_equal "១២៣៤៥", 12_345.convert(:khmer)
   end
+
+  def test_convert_to_lao
+    assert_equal "໐", "0".convert(:lao)
+    assert_equal "໒", "2".convert(:lao)
+    assert_equal "໑໐", "10".convert(:lao)
+    assert_equal "໑໐໐", "100".convert(:lao)
+    assert_equal "໑໒໓໔", "1234".convert(:lao)
+    assert_equal "໕໖໗໘", "5678".convert(:lao)
+    assert_equal "໑໒໓໔໕", 12_345.convert(:lao)
+  end
 end
