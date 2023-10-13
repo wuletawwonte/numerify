@@ -7,6 +7,7 @@ require_relative "../converters/thai"
 require_relative "../converters/bengali"
 require_relative "../converters/devanagari"
 require_relative "../converters/gujarati"
+require_relative "../converters/gurmukhi"
 
 module Numerify
   module Utils
@@ -19,7 +20,8 @@ module Numerify
         thai: Thai,
         bengali: Bengali,
         devanagari: Devanagari,
-        gujarati: Gujarati
+        gujarati: Gujarati,
+        gurmukhi: Gurmukhi
       }.freeze
 
       def call(language)
