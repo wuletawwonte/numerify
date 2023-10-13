@@ -69,4 +69,14 @@ class TestNumerify < Minitest::Test
     assert_equal "一万二千三百四十五", 12_345.convert(:chinese)
     assert_equal "一万二千三百四十五", 12_345.convert(:chinese)
   end
+
+  def test_convert_to_thai
+    assert_equal "๐", "0".convert(:thai)
+    assert_equal "๒", "2".convert(:thai)
+    assert_equal "๑๐", "10".convert(:thai)
+    assert_equal "๑๐๐", "100".convert(:thai)
+    assert_equal "๑๒๓๔", "1234".convert(:thai)
+    assert_equal "๕๖๗๘", "5678".convert(:thai)
+    assert_equal "๑๒๓๔๕", 12_345.convert(:thai)
+  end
 end
