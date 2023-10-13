@@ -82,4 +82,14 @@ class TestDecimalNumerals < Minitest::Test
     assert_equal "໕໖໗໘", "5678".convert(:lao)
     assert_equal "໑໒໓໔໕", 12_345.convert(:lao)
   end
+
+  def test_convert_to_malayalam
+    assert_equal "൦", "0".convert(:malayalam)
+    assert_equal "൨", "2".convert(:malayalam)
+    assert_equal "൧൦", "10".convert(:malayalam)
+    assert_equal "൧൦൦", "100".convert(:malayalam)
+    assert_equal "൧൨൩൪", "1234".convert(:malayalam)
+    assert_equal "൫൬൭൮", "5678".convert(:malayalam)
+    assert_equal "൧൨൩൪൫", 12_345.convert(:malayalam)
+  end
 end
