@@ -99,4 +99,14 @@ class TestNumerify < Minitest::Test
     assert_equal "५६७८", "5678".convert(:devanagari)
     assert_equal "१२३४५", 12_345.convert(:devanagari)
   end
+
+  def test_convert_to_gujarati
+    assert_equal "૦", "0".convert(:gujarati)
+    assert_equal "૨", "2".convert(:gujarati)
+    assert_equal "૧૦", "10".convert(:gujarati)
+    assert_equal "૧૦૦", "100".convert(:gujarati)
+    assert_equal "૧૨૩૪", "1234".convert(:gujarati)
+    assert_equal "૫૬૭૮", "5678".convert(:gujarati)
+    assert_equal "૧૨૩૪૫", 12_345.convert(:gujarati)
+  end
 end
