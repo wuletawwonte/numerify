@@ -52,4 +52,14 @@ class TestDecimalNumerals < Minitest::Test
     assert_equal "੫੬੭੮", "5678".convert(:gurmukhi)
     assert_equal "੧੨੩੪੫", 12_345.convert(:gurmukhi)
   end
+
+  def test_convert_to_kannada
+    assert_equal "೦", "0".convert(:kannada)
+    assert_equal "೨", "2".convert(:kannada)
+    assert_equal "೧೦", "10".convert(:kannada)
+    assert_equal "೧೦೦", "100".convert(:kannada)
+    assert_equal "೧೨೩೪", "1234".convert(:kannada)
+    assert_equal "೫೬೭೮", "5678".convert(:kannada)
+    assert_equal "೧೨೩೪೫", 12_345.convert(:kannada)
+  end
 end
