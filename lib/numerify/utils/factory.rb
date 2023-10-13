@@ -12,6 +12,7 @@ require_relative "../converters/kannada"
 require_relative "../converters/khmer"
 require_relative "../converters/lao"
 require_relative "../converters/malayalam"
+require_relative "../converters/myanmar"
 
 module Numerify
   module Utils
@@ -29,7 +30,8 @@ module Numerify
         kannada: Kannada,
         khmer: Khmer,
         lao: Lao,
-        malayalam: Malayalam
+        malayalam: Malayalam,
+        myanmar: Myanmar
       }.freeze
 
       def call(language)
