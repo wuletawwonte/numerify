@@ -3,6 +3,8 @@
 require_relative "../converters/geez"
 require_relative "../converters/roman"
 require_relative "../converters/chinese"
+require_relative "../converters/thai"
+require_relative "../converters/bengali"
 
 module Numerify
   module Utils
@@ -18,6 +20,8 @@ module Numerify
           Chinese.new
         when :thai
           Thai.new
+        when :bengali
+          Bengali.new
         else
           raise ArgumentError, "Unknown language: #{language}"
         end
