@@ -8,6 +8,7 @@ require_relative "../converters/bengali"
 require_relative "../converters/devanagari"
 require_relative "../converters/gujarati"
 require_relative "../converters/gurmukhi"
+require_relative "../converters/kannada"
 
 module Numerify
   module Utils
@@ -21,7 +22,8 @@ module Numerify
         bengali: Bengali,
         devanagari: Devanagari,
         gujarati: Gujarati,
-        gurmukhi: Gurmukhi
+        gurmukhi: Gurmukhi,
+        kannada: Kannada
       }.freeze
 
       def call(language)
