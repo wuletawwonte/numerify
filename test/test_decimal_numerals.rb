@@ -62,4 +62,14 @@ class TestDecimalNumerals < Minitest::Test
     assert_equal "೫೬೭೮", "5678".convert(:kannada)
     assert_equal "೧೨೩೪೫", 12_345.convert(:kannada)
   end
+
+  def test_convert_to_khmer
+    assert_equal "០", "0".convert(:khmer)
+    assert_equal "២", "2".convert(:khmer)
+    assert_equal "១០", "10".convert(:khmer)
+    assert_equal "១០០", "100".convert(:khmer)
+    assert_equal "១២៣៤", "1234".convert(:khmer)
+    assert_equal "៥៦៧៨", "5678".convert(:khmer)
+    assert_equal "១២៣៤៥", 12_345.convert(:khmer)
+  end
 end
