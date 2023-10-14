@@ -3,22 +3,41 @@
 require_relative "../converters/geez"
 require_relative "../converters/roman"
 require_relative "../converters/chinese"
+require_relative "../converters/thai"
+require_relative "../converters/bengali"
+require_relative "../converters/devanagari"
+require_relative "../converters/gujarati"
+require_relative "../converters/gurmukhi"
+require_relative "../converters/kannada"
+require_relative "../converters/khmer"
+require_relative "../converters/lao"
+require_relative "../converters/malayalam"
+require_relative "../converters/myanmar"
 
 module Numerify
   module Utils
     # A factory class to create numeral objects.
     class NumeralFactory
+      NUMERALCLASSES = {
+        geez: Geez,
+        roman: Roman,
+        chinese: Chinese,
+        thai: Thai,
+        bengali: Bengali,
+        devanagari: Devanagari,
+        gujarati: Gujarati,
+        gurmukhi: Gurmukhi,
+        kannada: Kannada,
+        khmer: Khmer,
+        lao: Lao,
+        malayalam: Malayalam,
+        myanmar: Myanmar
+      }.freeze
+
       def call(language)
-        case language
-        when :geez
-          Geez.new
-        when :roman
-          Roman.new
-        when :chinese
-          Chinese.new
-        else
-          raise ArgumentError, "Unknown language: #{language}"
-        end
+        raise ArgumentError, "Invalid language" unless NUMERALCLASSES.key?(language.to_sym)
+
+        NUMERALCLASSES[language.to_sym].new
       end
     end
   end
