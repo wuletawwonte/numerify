@@ -4,17 +4,20 @@
 
 ## Installation
 
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```bash
+$ gem install numerify
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```bash
+> require 'numerify'
+=> true
+> Numerify.convert 123
+=> "፻፳፫"
+> Numerify.convert(324, :roman)
+=> "CCCXXIV"
+```
 
 ## Development
 
