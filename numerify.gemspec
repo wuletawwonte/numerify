@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Wuletaw Wonte"]
   spec.email = ["wuletawwonte@gmail.com"]
 
-  spec.summary = "A ruby gem that converts numbers from arabic to and from geez, chinese, greek, and many more."
-  spec.description = "An extraordinary Ruby gem designed to effortlessly convert numbers between Arabic and various world languages, including Geez, Chinese, Greek, and many more."
+  spec.summary = "A ruby gem that converts numbers from arabic to and from geez, chinese, roman, and many more."
+  spec.description = "An extraordinary Ruby gem designed to effortlessly convert numbers between Arabic and various world languages, including Geez, Chinese, Roman, and many more."
   spec.homepage = "https://github.com/wuletawwonte/numerify.git"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
