@@ -10,12 +10,25 @@ $ gem install numerify
 
 ## Usage
 
+The gem provides two approaches for converting numerals. The first is using Numerify.convert method as shown below. 
+
 ```bash
 > require 'numerify'
 => true
 > Numerify.convert 123
 => "፻፳፫"
 > Numerify.convert(324, :roman)
+=> "CCCXXIV"
+```
+
+The second method utilizes monkey patching, to extend and String and Integer class of Ruby. With this approach, you can directly call the `convert` method on a string or an integer object. 
+
+```bash
+> require 'numerify'
+=> true
+> 123.convert
+=> "፻፳፫"
+> 325.convert(:roman)
 => "CCCXXIV"
 ```
 
